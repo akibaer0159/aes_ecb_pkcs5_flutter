@@ -1,3 +1,9 @@
+## Null Safety support
+Fork packages [flutter_aes_ecb_pkcs5](https://pub.dartlang.org/packages/flutter_aes_ecb_pkcs5) 
+
+Solve the null safety support problem
+
+
 ## AES 128 pkcs5 only support
 * Provide generation of AES keys
 * Provide encrypt for AES keys  
@@ -14,7 +20,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  flutter_aes_ecb_pkcs5: ^0.1.1
+  aes_ecb_pkcs5_flutter: ^0.1.1
 ```
 
 2. Install it You can install packages from the command line:
@@ -30,7 +36,7 @@ Alternatively, your editor might support flutter pub get. Check the docs for you
 3. Import it Now in your Dart code, you can use:
 
 ```
-import 'package:flutter_aes_ecb_pkcs5/flutter_aes_ecb_pkcs5.dart';
+import 'package:aes_ecb_pkcs5_flutter/aes_ecb_pkcs5_flutter.dart';
 ```
 
 
@@ -40,7 +46,7 @@ import 'package:flutter_aes_ecb_pkcs5/flutter_aes_ecb_pkcs5.dart';
 
 
 ```dart
-import 'package:flutter_aes_ecb_pkcs5/flutter_aes_ecb_pkcs5.dart';
+import 'package:aes_ecb_pkcs5_flutter/aes_ecb_pkcs5_flutter.dart';
 
 void main() {
 
