@@ -5,13 +5,38 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
+import io.flutter.plugin.common.BinaryMessenger;
+
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
 
 /** FlutterAesEcbPkcs5Plugin */
-public class FlutterAesEcbPkcs5Plugin implements MethodCallHandler {
+public class FlutterAesEcbPkcs5Plugin implements FlutterPlugin,MethodCallHandler {
+  static private MethodChannel channel;
+
+  public FlutterAesEcbPkcs5Plugin() {
+    System.out.println("FlutterAesEcbPkcs5Plugin init");
+  }
+
   /** Plugin registration. */
   public static void registerWith(Registrar registrar) {
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_aes_ecb_pkcs5");
-    channel.setMethodCallHandler(new FlutterAesEcbPkcs5Plugin());
+    FlutterAesEcbPkcs5Plugin plugin = new FlutterAesEcbPkcs5Plugin();
+    plugin.setup(registrar.messenger());
+  }
+
+  @Override
+  public void onAttachedToEngine(FlutterPluginBinding flutterPluginBinding) {
+    setup(flutterPluginBinding.getBinaryMessenger());
+  }
+
+  @Override
+  public void onDetachedFromEngine(FlutterPluginBinding binding) {
+    channel.setMethodCallHandler(null);
+  }
+
+  private void setup(
+          final BinaryMessenger messenger) {
+    channel = new MethodChannel(messenger, "flutter_aes_ecb_pkcs5");
+    channel.setMethodCallHandler(this);
   }
 
   @Override
