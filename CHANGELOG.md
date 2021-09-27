@@ -12,3 +12,7 @@
 
 ## 0.1.1
 * change description.
+
+## 0.1.2
+* support null-safety.
+* support android plugin V2.
