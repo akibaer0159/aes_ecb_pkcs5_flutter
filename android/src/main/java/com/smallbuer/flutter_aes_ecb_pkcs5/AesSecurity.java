@@ -107,15 +107,16 @@ public class AesSecurity {
      */
 	public String decrypt(String input, String key){
 
-		byte[] decodeKey = Hex.decode(key);
+		byte[] decodeKey = key.getBytes();
 
 		byte[] output = null;
-		
+
 		try{
+			byte[] decodedByte = Base64.decode(input, Base64.DEFAULT) ;
 			SecretKeySpec skey = new SecretKeySpec(decodeKey, ALGORITHM);
 			Cipher cipher = Cipher.getInstance(TRANSFORMATION);
 			cipher.init(Cipher.DECRYPT_MODE, skey);
-			output = cipher.doFinal(parseHexStr2Byte(input));
+			output = cipher.doFinal(decodedByte);
 
 		}catch(Exception e){
 			System.out.println(e.toString());
